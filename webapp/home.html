@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 启动画面相关  -->
+<link rel="stylesheet" href="css/nprogress.css">
+<link rel="stylesheet" href="css/bootAnimation.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/nprogress.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		NProgress.configure( /* {template: $('#splash-template').html()} */);
+		NProgress.start();
+	});
+	$(window).load(function() {
+		NProgress.done();
+		document.getElementById("body").style.display="block";
+	})
+</script>
+<!-- 启动画面相关  end-->
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"	name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+
+<title>可以用作微信宣传页面</title>
+
+<link rel="stylesheet" href="css/index.css">
+
+<!-- 适配相关 -->
+<script type="text/javascript" src="js/pageResponse.min.js"></script>
+<script type="text/javascript">
+	window.onload = window.onresize = function() {
+		pageResponse({
+			selectors : '.contain',//模块选择器，使用querySelectorAll的方法
+			mode : 'contain',// auto || contain || cover ，默认模式为auto 
+			width : '320',//输入页面的宽度，只支持输入数值，默认宽度为320px
+			height : '504'//输入页面的高度，只支持输入数值，默认高度为504px
+		});
+		pageResponse({
+			selectors : '.cover',
+			mode : 'cover',
+			width : '320',
+			height : '504'
+		});
+	}
+</script>
+
+<!-- 适配相关 end -->
+</head>
+<body id="body">
+	
+	<!-- 箭头指示引导 -->
+	<section class="u-arrow">
+		<p id="arrow"></p>
+	</section>
+	<!-- 箭头指示引导 end-->
+
+	<!-- 框架 -->
+	<section id="pageContain" class="page-wrap">
+		<div class="page page1 current">
+				<div class ="cover"></div>
+				<div class ="contain">					
+					<div style="width:100%;height:100%;background:#FF0000;color:#FFFFFF;">第一页</div>
+				</div>
+		</div>
+		<div class="page page2">
+				<div class ="cover"></div>
+				<div class ="contain">
+					<div style="width:100%;height:100%;background:#EEAD0E;color:#FFFFFF;">第二页</div>
+				</div>
+		</div>
+	</section>
+	<!-- 框架end -->
+
+</body>
+
+<script type="text/javascript" src="js/fullPage.min.js"></script>
+<script type="text/javascript">
+runPage = new FullPage({
+	id : 'pageContain', // id of contain
+	slideTime : 1000, // time of slide
+	continuous : false, // create an infinite feel with no endpoints
+	effect : { // slide effect
+		transform : {
+			translate : 'Y', // 'X'|'Y'|'XY'|'none'
+			scale : [ 1, 1 ], // [scalefrom, scaleto]
+			rotate : [0, 0]// [rotatefrom, rotateto]
+		},
+		opacity : [ 1, 1 ]// [opacityfrom, opacityto]
+	},
+	mode : 'wheel,touch', // mode of fullpage
+	easing : 'ease'
+});
+</script>
+</html>
